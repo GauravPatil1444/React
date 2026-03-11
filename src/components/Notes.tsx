@@ -7,7 +7,8 @@ function Notes() {
     const [Notes, setNotes] = useState<any>([]);
     const [AddNote, setAddNote] = useState(false);
     const [Delete, setDelete] = useState({"index":-1,"Title":"","Body":""});
-
+    const [search, setsearch] = useState(false);
+    
     useEffect(() => {
       setAddNote(false);
       setDelete({"index":-1,"Title":"","Body":""});
@@ -27,13 +28,12 @@ function Notes() {
         setAddNote(true);
     }
     
-
     return (
     <>
         <div className="md:p-2 p-4 container pt-4 max-w-xl max-h-[80vh] overflow-y-scroll relative mx-auto">
-            <Search setAddNote={setAddNote}/>
+            <Search setAddNote={setAddNote} Notes={Notes} setNotes={setNotes} setsearch={setsearch}/>
             {AddNote?
-                <EditNote Notes={Notes} setNotes={setNotes} setAddNote={setAddNote} Delete={Delete} setDelete={setDelete}/>
+                <EditNote Notes={Notes} setNotes={setNotes} setAddNote={setAddNote} Delete={Delete} setDelete={setDelete} search={search}/>
                 :
                 <div className="mt-5 flex flex-wrap gap-2">
                     {Notes.map((Note:any,i:number)=>(

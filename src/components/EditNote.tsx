@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import DeleteIcon from '../assets/delete.png';
 
-const EditNote = ({Notes,setNotes,setAddNote,Delete,setDelete}:any) => {
+const EditNote = ({Notes,setNotes,setAddNote,Delete,setDelete,search}:any) => {
 
     const [Title, setTitle] = useState('');
     const [Body, setBody] = useState('');
@@ -48,7 +48,7 @@ const EditNote = ({Notes,setNotes,setAddNote,Delete,setDelete}:any) => {
   return (
     <>
         <div className="p-3 border-1 border-slate-800 dark:border-white rounded mt-5" onMouseLeave={update}>
-            {Delete.index!=-1&&<button className="text-slate-800 w-fit mx-auto h-fit dark:text-white font-bold rounded-full cursor-pointer float-end" onClick={()=>handleDelete()}>
+            {Delete.index!=-1&&!search&&<button className="text-slate-800 w-fit mx-auto h-fit dark:text-white font-bold rounded-full cursor-pointer float-end" onClick={()=>handleDelete()}>
                 <img src={DeleteIcon} width={25} alt="Delete" />
             </button>}
             <div className="p-2 mx-auto border-1 border-sky-400 rounded mb-2" style={{marginTop:Delete.index!=-1?'40px':'16px'}}>
